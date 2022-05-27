@@ -1,2 +1,64 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div>
+  <h2>User info</h2>
+  <%= image_tag @book.user.get_profile_image(100,100) %>
+  <h6>name<%= @book.user.name %></h6>
+  <h6>introduction<%= @book.user.introduction %></h6>
+
+</div>
+
+<div class="main-logo">
+     <h2>NEW book</h2>
+</div>
+
+<% if @book.errors.any? %>
+    <div id="error_explanation">
+    <h2 class="main-error"><%= @book.errors.count %>errors prohibited this book from being saved:</h2>
+    <ul>
+    　<% @book.errors.full_messages.each do |msg| %>
+        <td><li class="main-error"><%= msg %></li></td>
+      <% end %>
+    </ul>
+    </div>
+<% end %>
+
+
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <div id="main-list">
+       <label for="book_title">Title</label><br>
+      <%=f.text_field :title %>
+    </div>
+    <div id="main-list">
+       <label for="book_body">Opinion</label><br>
+       <%= f.text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%=f.submit 'Create Book' %>
+    </div>
+<% end %>
+<% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+    <p id="notice"></p>
+
+
+    <h2>Book detail</h2>
+    <tbody>
+　　　<div>
+　　　  <%= image_tag @book.user.get_profile_image(100,100) %>
+　　　  <%= link_to book_path(@book.id) do %>
+　　　  <%= @book.title %>
+　　　  <% end %>
+　　　  <%= @book.body %>
+　　　  <% if @book.user == current_user %>
+　　　   <%= link_to "Edit", edit_book_path(@book.id) %>
+　　　   <%= link_to "Destroy", book_path(@book),method: :delete %>
+　　　  <% end %><br>
+　　　  <%= link_to do %>
+　　　  <%= @book.user.name %>
+　　　  <% end %>
+
+　　　</div>
+　　</tbody>

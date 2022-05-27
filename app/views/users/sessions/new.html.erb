@@ -21,5 +21,11 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+<% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+    <p id="notice"></p>
 
 <%= render "devise/shared/links" %>
