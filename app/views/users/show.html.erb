@@ -1,9 +1,4 @@
-<% if flash[:notice] %>
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-<% end %>
-    <p id="notice"></p>
+
 
 <!--ユーザーの詳細-->
 <div>
@@ -13,6 +8,9 @@
   <h6>introduction<%= @user.introduction %></h6>
   <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
 </div>
+
+<!--プロフィール設定画像 -->
+  <i class="fa-solid fa-user-gear"></i>
 
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
@@ -44,7 +42,6 @@
     </div>
 <% end %>
 
-    <p id="notice"></p>
 
 
     <h1>Books</h1>

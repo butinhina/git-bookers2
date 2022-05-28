@@ -1,10 +1,8 @@
-<div>
-  <h2>User info</h2>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h6>name<%= @user.name %></h6>
-  <h6>introduction<%= @user.introduction %></h6>
-
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'users/user', user: @user %>
+    </div>
 
 <%= form_with model: @book, url: 'books', method: :post do |f| %>
       <% if @book.errors.any? %>

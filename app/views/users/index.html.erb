@@ -4,6 +4,10 @@
   <h6>name<%= @user.name %></h6>
   <h6>introduction<%= @user.introduction %></h6>
 
+  <!--プロフィール設定画像 -->
+  <i class="fa-solid fa-user-gear"></i>
+
+
 </div>
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
