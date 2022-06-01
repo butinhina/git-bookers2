@@ -1,11 +1,13 @@
-<%= render 'error', model: @book %>
+<div class="container px-5 px-sm-0">
+  <%= render 'error', model: @book %>
+</div>
 <div class="container">
   <div class="row">
 
       <div class="col-md-3">
 
         <%= render 'users/user', user: @user %>
-        <h2>NEW book</h2>
+        <h2>New book</h2>
         <%= render'book',book: @book %>
 
       </div>
@@ -26,7 +28,7 @@
         <% @books.each do |book| %>
 　　　   <tr>
 　　　     <td>
-　　　       <%= link_to user_path(book.user), class: "text-decoration-none" do %>
+　　　       <%= link_to user_path(book.user.id), class: "text-decoration-none" do %>
 　　　         <%= image_tag book.user.get_profile_image(80,80) %>
 　　　       <% end %>
 　　　     </td>
